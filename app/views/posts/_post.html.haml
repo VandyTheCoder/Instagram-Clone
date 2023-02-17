@@ -1,0 +1,54 @@
+%div{id: "#{dom_id post}"}
+
+  .card{style: "width: 25rem;"}
+    .card-header.bg-white
+
+      .d-flex.justify-content-between
+        %div
+          - if post.user.profile_picture.attached?
+            = image_tag post.user.profile_picture, class: "img-thumbnail rounded-circle", style: "width: 7%"
+          - else
+            = image_tag "profile", class: "img-thumbnail rounded-circle", style: "width: 7%"
+          %span.fw-bold.mx-2= @post.user.full_name
+
+        %div
+          .dropdown
+            %a.text-dark.fs-4{style: "text-decoration: none", href: "javascript:void(0);", role: "button", "data-bs-toggle" => "dropdown", "aria-expanded" => "false"} ...
+            %ul.dropdown-menu
+              %li
+                %a.dropdown-item{href: "javascript:void(0);"} Edit Post
+              %li
+                %a.dropdown-item{href: "javascript:void(0);"} Delete Post
+      
+    .card-body
+      #post-img-slides.carousel.slide{"data-bs-ride" => "true"}
+        .carousel-inner
+          - post.images.each_with_index do |image, index|
+            - if index == 0
+              .carousel-item.active{style: "height: 25rem"}
+                = image_tag image, class: "d-block w-100", style: "max-height: 100%; object-fit: cover;"
+            - else
+              .carousel-item{style: "height: 25rem"}
+                = image_tag image, class: "d-block w-100", style: "max-height: 100%; object-fit: cover;"
+
+        %button.carousel-control-prev{type: "button", "data-bs-target" => "#post-img-slides", "data-bs-slide" => "prev"}
+          %span.carousel-control-prev-icon.bg-dark.rounded-circle{"aria-hidden" => "true"}
+          %span.visually-hidden Previous
+
+        %button.carousel-control-next{type: "button", "data-bs-target" => "#post-img-slides", "data-bs-slide" => "next"}
+          %span.carousel-control-next-icon.bg-dark.rounded-circle{"aria-hidden" => "true"}
+          %span.visually-hidden Next
+          
+        .carousel-indicators{style: "position: static;"}
+          - post.images.each_with_index do |image, index|
+            - if index == 0
+              %button.active.bg-dark{type: "button", "data-bs-target" => "#post-img-slides", "data-bs-slide-to" => "#{index}", "aria-current" => "true", "aria-label" => "Slide #{index+1}"}
+            - else
+              %button.bg-dark{type: "button", "data-bs-target" => "#post-img-slides", "data-bs-slide-to" => "#{index}", "aria-label" => "Slide #{index + 1}"}
+
+      %p.card-text
+        %span.fw-bold= post.user.username
+        = post.caption
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+    .card-footer
+      Featured

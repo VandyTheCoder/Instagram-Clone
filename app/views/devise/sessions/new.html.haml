@@ -1,0 +1,29 @@
+-# = render "devise/shared/links"
+.container.home-sections.d-flex.flex-row.justify-content-center.align-items-center
+  .image-section.pt-3.d-none.d-lg-block
+  .login-section.pt-3
+    .card.text-center.pt-5{style: "width: 23rem;"}
+      = image_tag "logo.png", class: "card-img-top"
+      .card-body
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .mb-3.mt-4
+            = f.email_field :email, class: "form-control", placeholder: "Phone number, username or email"
+          .mb-3
+            = f.password_field :password, class: "form-control", placeholder: "Password"
+          
+          .d-grid.gap-2
+            = f.submit "Log in", class: "btn btn-primary d-block" 
+        
+          .d-flex.align-items-center.mt-4
+            .line
+            %h2.line-text OR
+            .line
+          
+          %a.d-block.mt-4.text-decoration-none.fw-bold{href: "javascript:void(0);"}
+            = image_tag "facebook.png", class: "facebook"
+            Log In With Facebook
+
+    .card.text-center.py-2.mt-3{style: "width: 23rem;"}
+      .card-text
+        Don't have an account?
+        = link_to "Sign Up", new_user_registration_path, class: "fs-6 my-4 text-decoration-none"

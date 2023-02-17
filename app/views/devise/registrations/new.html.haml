@@ -1,0 +1,39 @@
+-# = render "devise/shared/links"
+.container.home-sections.d-flex.flex-row.justify-content-center.align-items-center
+  .login-section.pt-3
+    .card.text-center.pt-5.mx-auto{style: "width: 23rem;"}
+      = image_tag "logo.png", class: "card-img-top"
+      %p.w-75.fs-6.fw-bold.text-secondary.align-self-center.mt-2
+        Sign Up to see photos and videos from your friends.
+
+      %a.d-block.mt-4.text-decoration-none.fw-bold.bg-primary.text-white.rounded.w-75.align-self-center.p-1{href: "javascript:void(0);"}
+        = image_tag "facebook.png", class: "facebook"
+        Log In With Facebook
+
+      .d-flex.align-items-center.mt-4
+        .line
+        %h2.line-text OR
+        .line
+
+      .card-body
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          .mb-3.mt-4
+            = f.email_field :email, class: "form-control", placeholder: "Email"
+          .mb-3.mt-4
+            = f.text_field :phone_number, class: "form-control", placeholder: "Phone Number"
+          .mb-3.mt-4
+            = f.text_field :full_name, class: "form-control", placeholder: "Full Name"
+          .mb-3.mt-4
+            = f.text_field :username, class: "form-control", placeholder: "Username"
+          .mb-3.mt-4
+            = f.password_field :password, class: "form-control", placeholder: "Password"
+          .mb-3
+            = f.password_field :password_confirmation, class: "form-control", placeholder: "Confirmation Password"
+          
+          .d-grid.gap-2
+            = f.submit "Sign Up", class: "btn btn-primary d-block" 
+
+    .card.text-center.py-2.mt-3.mx-auto{style: "width: 23rem;"}
+      .card-text
+        have an account?
+        = link_to "Sign In", new_user_session_path, class: "fs-6 my-4 text-decoration-none text-info"
