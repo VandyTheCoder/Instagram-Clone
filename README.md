@@ -1,24 +1,46 @@
-# README
+# Instagram Clone
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Just a practice my skill with RubyOnRails 7 with Bootstrap 5 UI.
 
-Things you may want to cover:
+## Install
 
-* Ruby version
+### Clone the repository
 
-* System dependencies
+```shell
+git clone git@github.com:VandyTheCoder/Instagram-Clone.git
+cd Instagram-Clone
+```
 
-* Configuration
+### Check your Ruby version
 
-* Database creation
+```shell
+ruby -v
+```
 
-* Database initialization
+The ouput should start with something like `ruby 3.0.3`
 
-* How to run the test suite
+If not, install the right ruby version using [rbenv](https://github.com/rbenv/rbenv) (it could take a while):
 
-* Services (job queues, cache servers, search engines, etc.)
+```shell
+rbenv install 3.0.3
+```
 
-* Deployment instructions
+### Install dependencies
 
-* ...
+Using [Bundler](https://github.com/bundler/bundler) and [Yarn](https://github.com/yarnpkg/yarn):
+
+```shell
+bundle && yarn
+```
+
+### Initialize the database
+
+```shell
+rails db:create db:migrate db:seed
+```
+
+## Serve
+
+```shell
+rails s
+```
